@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .highlight {
+        background-color: yellow;
+      }
+      #textContainer {
+        margin: 50px auto;
+        text-align: center;
+        padding: 15px;
+        text-align: center;
+        gap: 20px;
+      }
+      #textContainer p {
+        border: 1px solid black;
+        width: 300px;
+        margin: 15px auto;
+        padding: 15px 10px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 60px;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="textContainer">
+      <p data-count="0">This is paragraph 1</p>
+      <p data-count="0">This is paragraph 2</p>
+      <p data-count="0">This is paragraph 3</p>
+    </div>
+    <script>
+      const container = document.getElementById("textContainer");
+
+      container.addEventListener("click", function (event) {
+        if (event.target.tagName === "P") {
+          const para = event.target;
+          const isHighlighted = para.classList.toggle("highlight");
+
+          if (isHighlighted) {
+            let count = parseInt(para.getAttribute("data-count"));
+            count++;
+            para.setAttribute("data-count", count);
+
+            const originalText = para.textContent.split(" (Clicked")[0];
+            para.textContent = `${originalText} (Clicked ${count} times)`;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

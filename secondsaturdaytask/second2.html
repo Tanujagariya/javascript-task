@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Accordion</title>
+    <style>
+     
+      .accordion {
+        max-width: 500px;
+        margin: 50px auto;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .item {
+        background-color: rgb(238, 4, 137);
+        border: 1px solid #ccc;
+        padding: 15px;
+        text-align: center;
+        border-radius: 5px;
+      }
+
+      .accordion h3 {
+        margin: 0;
+        cursor: pointer;
+        color: black;
+      }
+
+      .para {
+        display: none;
+        margin-top: 10px;
+        color: blue;
+      }
+
+      .para.show {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="accordion">
+      <div class="item">
+        <h3>Section 1</h3>
+        <p class="para">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </p>
+      </div>
+      <div class="item">
+        <h3>Section 2</h3>
+        <p class="para">
+          Vestibulum ante ipsum primis in faucibus orci luctus.
+        </p>
+      </div>
+      <div class="item">
+        <h3>Section 3</h3>
+        <p class="para">
+          Sed ut perspiciatis unde omnis iste natus error sit.
+        </p>
+      </div>
+    </div>
+
+    <script>
+      const headings = document.querySelectorAll(".accordion h3");
+      const paras = document.querySelectorAll(".accordion .para");
+
+      headings.forEach((h3, index) => {
+        h3.addEventListener("click", () => {
+          paras[index].classList.toggle("show");
+        });
+      });
+    </script>
+  </body>
+</html>
